@@ -58,14 +58,9 @@ make help
 
 ## Submitting your results
 
-Run the benchmarks, then package the results with:
+The `make submit` command (automatically ran with make all) creates a result folder with an id corresponding to your running configuration.
 
-```bash
-make all DTYPE=float64        # or any configuration
-make submit DTYPE=float64     # creates results/<cpu>_<dtype>_<date>/
-```
-
-Then open a pull request adding your `results/<id>/` folder. The only required file is `run_info.json` (generated automatically) alongside the benchmark JSON files.
+Once you have generated results, open a pull request adding your `results/<id>/` folder. The only required file is `run_info.json` (generated automatically) alongside the benchmark JSON files.
 
 
 
