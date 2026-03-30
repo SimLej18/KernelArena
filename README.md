@@ -4,8 +4,14 @@ Benchmarks comparing Gaussian Process kernel implementations across 6 Python lib
 
 ## Requirements
 
-- [`uv`](https://docs.astral.sh/uv/) — used to create isolated virtual environments per library
-- Python 3.10 (for GPy): `uv python install 3.10`
+To run the benchmarks on your machine, you need python>=3.10 and the pip packages listed in requirements.txt. 
+With conda, the installation looks like this:
+
+```bash
+conda create -n KArena python=3.12
+conda activate KArena
+pip install -r requirements.txt
+```
 
 ## Quickstart
 
