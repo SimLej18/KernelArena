@@ -56,7 +56,7 @@ help:
 	@echo ""
 	@echo "Requires: uv  ->  https://docs.astral.sh/uv/"
 
-all: data kernax sklearn gpytorch gpjax gpflow gpy reports plots
+all: data kernax sklearn gpytorch gpjax gpflow gpy reports plots submit
 
 $(OUT):
 	mkdir -p $(OUT)
