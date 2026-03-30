@@ -1,0 +1,3 @@
+-r general.txt
+torch
+gpytorch>=1.15

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "karena"
+version = "0.1.0"
+description = "Kernel benchmarking suite comparing GP implementations across JAX, PyTorch, TensorFlow, and scikit-learn"
+requires-python = ">=3.12"
+dependencies = [
+    "jax>=0.9",
+    "numpy>=2.0",
+    "pandas",
+    "tabulate",
+]
+
+[project.optional-dependencies]
+kernax   = ["kernax-ml>=0.5.5a0", "pytest>=7.0", "pytest-benchmark>=5.2"]
+sklearn  = ["scikit-learn>=1.8",   "pytest>=7.0", "pytest-benchmark>=5.2"]
+gpytorch = ["torch", "gpytorch>=1.15", "pytest>=7.0", "pytest-benchmark>=5.2"]
+gpjax    = ["gpjax>=0.13",         "pytest>=7.0", "pytest-benchmark>=5.2"]
+gpflow   = [
+    "gpflow==2.10.0",
+    "tensorflow==2.21.0",
+    "tensorflow-probability==0.25.0",
+    "pytest>=7.0",
+    "pytest-benchmark>=5.2",
+]
+all = ["karena[kernax,sklearn,gpytorch,gpjax,gpflow]"]
+dev = ["pytest>=7.0", "pytest-benchmark>=5.2"]
+
+[project.scripts]
+karena-report = "report:main"
+
+[tool.setuptools]
+py-modules = ["input_generators", "report", "conftest"]
+
+[tool.setuptools.package-data]
+"*" = ["kernax/test_*.py", "sklearn/test_*.py", "gpytorch/test_*.py", "gpjax/test_*.py", "gpflow/test_*.py"]
+
+[tool.pytest.ini_options]

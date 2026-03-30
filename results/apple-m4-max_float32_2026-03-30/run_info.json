@@ -1,0 +1,43 @@
+{
+  "id": "apple-m4-max_float32_2026-03-30",
+  "date": "2026-03-30",
+  "dtype": "float32",
+  "rounds": 20,
+  "gpu": false,
+  "machine": {
+    "processor": "arm",
+    "machine": "arm64",
+    "python_compiler": "Clang 20.1.8 ",
+    "python_implementation": "CPython",
+    "python_implementation_version": "3.12.13",
+    "python_version": "3.12.13",
+    "python_build": [
+      "main",
+      "Mar 19 2026 20:12:32"
+    ],
+    "release": "25.3.0",
+    "system": "Darwin",
+    "cpu": {
+      "python_version": "3.12.13.final.0 (64 bit)",
+      "cpuinfo_version": [
+        9,
+        0,
+        0
+      ],
+      "cpuinfo_version_string": "9.0.0",
+      "arch": "ARM_8",
+      "bits": 64,
+      "count": 16,
+      "arch_string_raw": "arm64",
+      "brand_raw": "Apple M4 Max"
+    }
+  },
+  "libraries": {
+    "kernax": "0.5.5-alpha",
+    "sklearn": "1.8.0",
+    "gpytorch": "1.15.2",
+    "gpjax": "0.13.6",
+    "gpflow": "2.10.0",
+    "gpy": "1.13.2"
+  }
+}
