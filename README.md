@@ -2,7 +2,7 @@
 
 Benchmarks comparing Gaussian Process kernel implementations across 6 Python libraries — **Kernax**, **scikit-learn**, **GPyTorch**, **GPJax**, **GPFlow**, and **GPy** — on Squared Exponential and Matérn 5/2 kernels.
 
-## Requirements
+## Requirements & Quickstart
 
 To run the benchmarks on your machine, you need python>=3.10 and the pip packages listed in requirements.txt. 
 With conda, the installation looks like this:
@@ -10,14 +10,16 @@ With conda, the installation looks like this:
 ```bash
 conda create -n KArena python=3.12
 conda activate KArena
+
+git clone https://github.com/SimLej18/KernelArena.git
+cd KernelArena
+
 pip install -r requirements.txt
 ```
 
-## Quickstart
+Then, you can run the benchmarks with the make commands. For example:
 
-```bash
-git clone https://github.com/SimLej18/KernelArena.git
-cd KernelArena
+```
 make all DTYPE=float64 GPU=1
 ```
 
