@@ -27,6 +27,14 @@ If you want to run the benchmarks on cpu, remove the GPU option or set it to 0.
 
 This generates input data, runs all 6 libraries, then saves reports and plots under `out/`.
 
+
+> [NOTE]
+> **For Windows users:** multiple tools (make, uv, mkdir, ...) do not work the same on Windows.
+> The easiest way to run the benchmarks on your machine is to use `wsl`. 
+> 
+> For example: 
+> `wsl make all`
+
 ## Example result
 
 Matérn 5/2 — 1D random inputs — float32 — CPU (Apple M4 Max)

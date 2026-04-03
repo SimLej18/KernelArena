@@ -91,15 +91,10 @@ gpjax: data/meta.json | $(OUT) env
 	[ "$(GPU)" != "1" ] || uv pip install -q --python env/.venv-gpjax/bin/python "jax[cuda13]>=0.9"
 	env/.venv-gpjax/bin/pytest gpjax/ $(BENCH_OPTS) --benchmark-json=$(OUT)/gpjax.json
 
-# GPFlow requires --no-deps due to numpy version conflict between gpflow and tensorflow.
-# pytest/pytest-benchmark are installed first (with their deps) to avoid --no-deps stripping them.
-# JAX stays CPU-pinned inside gpflow.txt; do NOT use general.txt here (cuda12 vs pinned CPU conflict).
-# GPU=1: install tensorflow[and-cuda] to get CUDA-bundled TF (TF 2.13+ packaging).
 gpflow: data/meta.json | $(OUT) env
-	[ -d env/.venv-gpflow ] || uv venv env/.venv-gpflow
-	uv pip install -q --python env/.venv-gpflow/bin/python "pytest>=7.0" "pytest-benchmark>=5.2"
-	uv pip install -q --python env/.venv-gpflow/bin/python --no-deps -r requirements/gpflow.txt
-	[ "$(GPU)" != "1" ] || uv pip install -q --python env/.venv-gpflow/bin/python "tensorflow[and-cuda]==2.21.0"
+	[ -d env/.venv-gpflow ] || uv venv --python 3.9 env/.venv-gpflow
+	[ "$(GPU)" != "1" ] || uv pip install -q --python env/.venv-gpflow/bin/python 'tensorflow[and-cuda]==2.18.0'
+	uv pip install -q --python env/.venv-gpflow/bin/python -r requirements/gpflow.txt
 	$(CUDA_ENV) env/.venv-gpflow/bin/pytest gpflow/ $(BENCH_OPTS) --benchmark-json=$(OUT)/gpflow.json
 
 # GPy 1.13 requires numpy==1.26 + scipy==1.12, incompatible with JAX (numpy>=2).
@@ -143,4 +138,4 @@ lock:
 	uv pip compile requirements/report.txt   -o requirements/report.lock
 
 clean:
-	rm -rf env/ data/
+	rm -rf env/ data/ out/ .benchmarks
